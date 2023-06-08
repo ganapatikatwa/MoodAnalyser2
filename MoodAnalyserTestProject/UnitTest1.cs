@@ -21,6 +21,18 @@ namespace MoodAnalyserTestProject
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void AnyMood()
+        {
+            //Arrange
+            MoodAnalyse obj = new MoodAnalyse();
+            string message = "I am in Any Mood";
+            string expected = "Happy Mood";
+            //act
+            string actual = obj.AnalyseMood(message);
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
