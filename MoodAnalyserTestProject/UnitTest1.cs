@@ -24,6 +24,7 @@ namespace MoodAnalyserTestProject
         [TestMethod]
         public void AnyMood()
         {
+            //Arrange
             MoodAnalyse obj = new MoodAnalyse();
             string message = "I am in Any Mood";
             string expected = "Happy Mood";
