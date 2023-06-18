@@ -8,37 +8,40 @@ namespace MoodAnalyser
 {
     public class MoodAnalyse
     {
+        //Refactor to take message in Constructor
         public string message;
         public MoodAnalyse()
         {
 
         }
+
         public MoodAnalyse(string message)
         {
             this.message = message;
         }
-        public string AnalyseMood(string message)
+
+        public string AnalyseMood()
         {
             try
             {
+
                 if (message.ToUpper().Contains("SAD"))
                 {
                     return "Sad Mood";
                 }
-                else if(message.ToUpper().Contains("HAPPY"))
+                else
                 {
                     return "Happy Mood";
                 }
-                else
-                {
-                    throw (new Exception("null"));
-                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                return "Happy";
             }
-        
+
+
         }
+
+
     }
 }
