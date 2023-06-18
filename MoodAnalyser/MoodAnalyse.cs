@@ -19,15 +19,26 @@ namespace MoodAnalyser
         }
         public string AnalyseMood(string message)
         {
-            if (message.ToUpper().Contains("SAD"))
+            try
             {
-                return "Sad Mood";
+                if (message.ToUpper().Contains("SAD"))
+                {
+                    return "Sad Mood";
+                }
+                else if(message.ToUpper().Contains("HAPPY"))
+                {
+                    return "Happy Mood";
+                }
+                else
+                {
+                    throw (new Exception("null"));
+                }
             }
-            else
+            catch(Exception ex)
             {
-                return "Happy Mood";
+                Console.WriteLine(ex.Message);
             }
-
+        
         }
     }
 }

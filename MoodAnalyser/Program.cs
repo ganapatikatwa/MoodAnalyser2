@@ -15,7 +15,7 @@ namespace MoodAnalyser
             Console.WriteLine("Enter your Mood:");
             string message = Console.ReadLine();
 
-            Console.WriteLine(moodobj.AnalyseMood(message));
+            Console.WriteLine(moodobj.AnalyseMood(message+"Mood"));
         }
     }
 }
