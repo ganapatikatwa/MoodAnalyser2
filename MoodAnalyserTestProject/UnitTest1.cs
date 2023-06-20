@@ -138,6 +138,24 @@ namespace MoodAnalyserTestProject
 
             Assert.AreNotEqual(expected, factory);
         }
+        //Test Case 4.2
+        [TestMethod]
+        public void GivenImpoperClassName_ShouldThrowMoodAnalyseException_IndicatingNoSuchClass()
+        {
+            try
+            {
+                //Arrange
+                string className = "DemoNamespace.MoodAnalyser";     //wrong className passed to pass test
+                string constructorName = "MoodAnalyser";
+                //Act
+                object resultObj = MoodAnalyserFactory.CreateMoodAnalyser(className, constructorName);
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                //Assert
+                Assert.AreEqual("Class not found", e.Message);
+            }
+        }
 
     }
 }
