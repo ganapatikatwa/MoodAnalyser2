@@ -1,6 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-//using MoodAnalyser1;
 using MoodAnalyser;
 using MoodAnalyser1;
 
@@ -132,11 +131,27 @@ namespace MoodAnalyserTestProject
             object expected = new MoodAnalyse();
 
             //Act
-            object factory = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyserProb.MoodAnalyser");
+            object factory = MoodAnalyserFactory.CreateMoodAnalyser(MoodAnalyser.MoodAnalyse);
 
             //Assert
 
             Assert.AreNotEqual(expected, factory);
+        }
+        [TestMethod]
+        public void GivenMoodAnalyser_ClassName_Should_ReturnMoodAnalyzer_Object()
+        {
+            //Arrange
+            string className = "MoodAnalyse.MoodAnalyser";
+            string constructorName = "MoodAnalyser";
+
+            //Act
+            object expected = new MoodAnalyser("MoodAnalyse.MoodAnalyser", constructorName);
+            object checkObj = MoodAnalyserFactory.CreateMoodAnalyser(className, constructorName);
+
+            //Assert
+            //Assert.AreEqual(expected, checkObj);
+            expected.Equals(checkObj);
+
         }
         //Test Case 4.2
         [TestMethod]
@@ -173,6 +188,21 @@ namespace MoodAnalyserTestProject
                 //Assert
                 Assert.AreEqual("Constructor not Found", e.Message);
             }
+        }
+        //UC5.1
+
+        [TestMethod]
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject_UsingParameterizedConstructor()
+        {
+            //Arrange
+            object expected = new MoodAnalyse("HAPPY");
+
+            //Act
+            object actual = MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("MoodAnalyserProb.MoodAnalyser", "MoodAnalyser", "HAPPY");
+
+            //Assert
+            expected.Equals(actual);
+
         }
 
     }
