@@ -124,19 +124,13 @@ namespace MoodAnalyserTestProject
         //Test Case 4.1 Given MoodAnalyser ClassName should return object of MoodAnalyser
 
         [TestMethod]
-        public void GivenAnalyseMoodClassName_ShouldreturnMoodAnalyseObject()
+        public void GivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObject()
         {
-            //Arrange
-
-            object expected = new MoodAnalyse();
-
-            //Act
-            object factory = MoodAnalyserFactory.CreateMoodAnalyser(MoodAnalyser.MoodAnalyse);
-
-            //Assert
-
-            Assert.AreNotEqual(expected, factory);
+            object expected = new MoodAnalyser();
+            object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyse.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(obj);
         }
+
         [TestMethod]
         public void GivenMoodAnalyser_ClassName_Should_ReturnMoodAnalyzer_Object()
         {
@@ -153,6 +147,7 @@ namespace MoodAnalyserTestProject
             expected.Equals(checkObj);
 
         }
+
         //Test Case 4.2
         [TestMethod]
         public void GivenImpoperClassName_ShouldThrowMoodAnalyseException_IndicatingNoSuchClass()
@@ -228,6 +223,31 @@ namespace MoodAnalyserTestProject
             }
 
         }
+        //Test Case 5.3 Given improper Constructor Name Should Throw Excepion
+
+        [TestMethod]
+        public void GivenConstructorNameWhenImproper_ShouldThrowMoodAnalysisException_NoSuchMethodFound()
+        {
+            try
+            {
+                //Arrange
+                string className = "MoodAnalyserProb.MoodAnalyser";
+                string constructorName = "DemoConstructorName";
+
+
+                //Act
+                object actual = MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor(className, constructorName, "GOOD");
+
+
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                //Assert
+                Assert.AreEqual("Constructor not Found", e.Message);
+            }
+
+        }
+
 
     }
 }
