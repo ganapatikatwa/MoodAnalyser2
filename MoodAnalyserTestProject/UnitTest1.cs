@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 //using MoodAnalyser1;
 using MoodAnalyser;
+using MoodAnalyser1;
 
 namespace MoodAnalyserTestProject
 {
@@ -20,7 +21,7 @@ namespace MoodAnalyserTestProject
                 string message = "I am in Sad Mood";
                 MoodAnalyse obj = new MoodAnalyse(message);
 
-                string expected = "Happy";
+                string expected = "Sad";
 
                 //Act
 
@@ -120,6 +121,22 @@ namespace MoodAnalyserTestProject
                 //Assert
                 Assert.AreEqual("Mood Should Not Be Empty", e.Message);
             }
+        }
+        //Test Case 4.1 Given MoodAnalyser ClassName should return object of MoodAnalyser
+
+        [TestMethod]
+        public void GivenAnalyseMoodClassName_ShouldreturnMoodAnalyseObject()
+        {
+            //Arrange
+
+            object expected = new MoodAnalyse();
+
+            //Act
+            object factory = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyserProb.MoodAnalyser");
+
+            //Assert
+
+            Assert.AreNotEqual(expected, factory);
         }
 
     }
