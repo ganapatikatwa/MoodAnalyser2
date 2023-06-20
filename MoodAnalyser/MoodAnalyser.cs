@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyser
 {
-    public class MoodAnalyser
+    public class MoodAnalyse
     {
         //Refactor to take message in Constructor
         public string message;
-        public MoodAnalyser()
+        public MoodAnalyse()
         {
 
         }
 
-        public MoodAnalyser(string message)
+        public MoodAnalyse(string message)
         {
             this.message = message;
         }

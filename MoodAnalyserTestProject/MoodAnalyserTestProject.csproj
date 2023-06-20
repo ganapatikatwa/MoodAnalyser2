@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MoodAnalyser\MoodAnalyser.csproj" />
+    <ProjectReference Include="..\MoodAnalyser\MoodAnalyser1.csproj" />
   </ItemGroup>
 
 </Project>

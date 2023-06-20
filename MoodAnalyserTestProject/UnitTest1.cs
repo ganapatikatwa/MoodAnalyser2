@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-using MoodAnalyser1;
+//using MoodAnalyser1;
+using MoodAnalyser;
 
 namespace MoodAnalyserTestProject
 {
@@ -17,7 +18,7 @@ namespace MoodAnalyserTestProject
                 //Arrange
 
                 string message = "I am in Sad Mood";
-                MoodAnalyser obj = new MoodAnalyser(message);
+                MoodAnalyse obj = new MoodAnalyse(message);
 
                 string expected = "Happy";
 
@@ -72,7 +73,7 @@ namespace MoodAnalyserTestProject
         {
             //Arrange
             string message = "";
-            MoodAnalyser obj = new MoodAnalyser(message);
+            MoodAnalyse obj = new MoodAnalyse(message);
             string expected = "Mood Should Not Be Empty";
 
             //Act
@@ -90,7 +91,7 @@ namespace MoodAnalyserTestProject
             try
             {
                 //Arrange
-                MoodAnalyser obj = new MoodAnalyser("null");
+                MoodAnalyse obj = new MoodAnalyse("null");
                 //Act
                 string actual = obj.AnalyseMood();
             }
@@ -98,6 +99,26 @@ namespace MoodAnalyserTestProject
             {
                 //Assert
                 Assert.AreEqual("Mood Should Not Be Null", e.Message);
+            }
+        }
+        //Test Case 3.2 Given Null Mood Should throw MoodAnalysis Exception
+
+        [TestMethod]
+        public void GivenEmptyMood_ShouldthrowMoodAnalysisException_IndicatingEmptyMood()
+        {
+            try
+            {
+                //Arrange
+                string message = "";
+                MoodAnalyse obj = new MoodAnalyse(message);
+
+                //Act
+                string actual = obj.AnalyseMood();
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                //Assert
+                Assert.AreEqual("Mood Should Not Be Empty", e.Message);
             }
         }
 
