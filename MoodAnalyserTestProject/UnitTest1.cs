@@ -204,6 +204,30 @@ namespace MoodAnalyserTestProject
             expected.Equals(actual);
 
         }
+        //Test Case 5.2 Given improper Class Name Should Throw Excepion
+
+        [TestMethod]
+        public void GivenClassNameWhenImproper_ShouldThrowMoodAnalysisException_NoSuchClassFound()
+        {
+            try
+            {
+                //Arrange
+                string className = "DemoNamespace.MoodAnalyser";
+                string constructorName = "MoodAnalyser";
+
+
+                //Act
+                object actual = MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor(className, constructorName, "HAPPY");
+
+
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                //Assert
+                Assert.AreEqual("Class not Found", e.Message);
+            }
+
+        }
 
     }
 }
