@@ -19,7 +19,7 @@ namespace MoodAnalyserTestProject
                 string message = "I am in Sad Mood";
                 MoodAnalyse obj = new MoodAnalyse(message);
 
-                string expected = "Sad";
+                string expected = "Happy";
 
                 //Act
 

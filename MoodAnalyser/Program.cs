@@ -13,7 +13,7 @@ namespace MoodAnalyser
             string message = Console.ReadLine();
             //Creating object of MoodAnalyser class
 
-            MoodAnalyse moodobj = new MoodAnalyse(message);
+            MoodAnalyser moodobj = new MoodAnalyser(message);
             string store = moodobj.AnalyseMood();
 
             Console.WriteLine(store + "Mood");

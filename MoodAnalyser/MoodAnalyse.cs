@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyser
 {
-    public class MoodAnalyse
+    public class MoodAnalyser
     {
         //Refactor to take message in Constructor
         public string message;
-        public MoodAnalyse()
+        public MoodAnalyser()
         {
 
         }
 
-        public MoodAnalyse(string message)
+        public MoodAnalyser(string message)
         {
             this.message = message;
         }
@@ -24,24 +24,28 @@ namespace MoodAnalyser
         {
             try
             {
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "Mood Should Not Be Empty");
 
+                }
                 if (message.ToUpper().Contains("SAD"))
                 {
-                    return "Sad Mood";
+                    return "Sad";
                 }
                 else
                 {
-                    return "Happy Mood";
+                    return "Happy";
                 }
             }
-            catch (Exception ex)
+            catch (NullReferenceException)
             {
-                return "Happy";
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Mood Should Not Be Null");
             }
-
-
+            catch (MoodAnalyserCustomException e)
+            {
+                return "Mood Should Not Be Empty";
+            }
         }
-
-
     }
 }
